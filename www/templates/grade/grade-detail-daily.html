@@ -1,0 +1,71 @@
+<ion-view hide-tabs class="grade-detail-daily-header">
+
+  <ion-nav-title>{{dailyData.class_name}}</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-setting" ng-click="showGradeSetting()">
+          <i class="ion ion-ios-gear-outline grade-detail-daily-right"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content class="grade-detail-daily" scroll="false">
+
+        <div class="grade-detail-header">
+            <div class="content">
+                <div class="course-number">
+                     <span class="number">{{dailyData.synthesis_level}}</span>
+                     <span class="title">综合评价</span>
+                </div>
+
+                <div class="course-rate">
+                     <span class="number">{{dailyData.student_index}}/{{dailyData.class_student_count}}</span>
+                     <span class="title">班级排名</span>
+                </div>
+            </div>
+
+            <div class="learn-evalution" ui-sref="main.courseDetailDailyEvalution({class_number: class_number})">
+                <span class="evalution-text">学习<br/>报告</span>
+            </div>
+
+            <p class="puzzle-left"></p>
+            <p class="puzzle-right"></p>
+            <p class="wave-bottom"></p>
+        </div>
+
+        <ion-content style="top: 204px;" class="grade-detail-content">
+                <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+                <p class="course-nothing" ng-if="dailyData.dailyList.length == 0">
+                    <img ng-src="{{dailyData.status ? 'img/load-error.png' : 'img/blank.png'}}">
+                    <span class="error-text" ng-show="dailyData.status">加载失败, 下拉重新加载</span>
+                </p>
+
+                <div class="view-panel detail-daily-list" ng-repeat="item in dailyData.dailyList track by $index" ng-click="showDetailPage(item)">
+                        <div class="view-panel-cell" flash>
+                            <div class="view-cell-hd">
+                                <h4 class="ellipse">{{item.task_name}}</h4>
+                                <p class="number">共{{item.task_test_count}}题</p>
+                            </div>
+                            <div class="view-cell-bd">
+                                  <span ng-class="{0: 'orange-text', 1: 'orange-text', 2: 'gray-text', 3: 'green-text', 4: 'gray-button'}[item.task_status]">{{item.task_status | courseType:item.task_accuracy:item.deadline_time}}</span>
+                                  <span class="gray-text" ng-if="item.task_status==2 || item.task_status==3 || item.task_status==4">{{ item.deadline_time*1000 | date:'MM月dd日 HH:mm' }} 截止</span>
+                            </div>
+                        </div>
+                </div>
+
+                <p class="more" ng-if="!dailyData.status && !dailyData.has_next && dailyData.page>1 || dailyData.status && !dailyData.has_next">没有更多数据了</p>
+
+                <p class="more" ng-if="dailyData.status && dailyData.has_next && dailyData.page>1" ng-click="reloadMore()">加载失败, 点击<em>重新加载</em></p>
+
+                <ion-infinite-scroll class="infinite-scroll" ng-if="dailyData.has_next && !dailyData.status" immediate-check="false" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
+                <!--
+                    没有更多数据了            has_next: false  status: false  没有下一页  请求正常
+                    加载失败, 点击重新加载    has_next: true  status: true    有下一页    请求失败
+
+                    未全部加载   刷新   ->  可点击重新加载
+                    已全部加载   刷新   ->  没有更多数据
+                -->
+        </ion-content>
+    </ion-content>
+</ion-view>

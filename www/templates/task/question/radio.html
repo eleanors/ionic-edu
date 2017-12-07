@@ -1,0 +1,45 @@
+<div class="sub-title" ng-bind-html="x.content.topic" view-picture>
+</div>
+<div class="sub-answer">
+    <ul>
+        <li ng-if="x.content.options_a" ng-click="checkthis('A','radio',x)">
+            <div class="num">
+                <i ng-class="(x.check == 'A')?'check':''">A</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_a"></div>
+        </li>
+        <li ng-if="x.content.options_b" ng-click="checkthis('B','radio',x)">
+            <div class="num">
+                <i ng-class="(x.check == 'B')?'check':''">B</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_b"></div>
+        </li>
+        <li ng-if="x.content.options_c" ng-click="checkthis('C','radio',x)">
+            <div class="num">
+                <i ng-class="(x.check == 'C')?'check':''">C</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_c"></div>
+        </li>
+        <li ng-if="x.content.options_d" ng-click="checkthis('D','radio',x)">
+            <div class="num">
+                <i ng-class="(x.check == 'D')?'check':''">D</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_d"></div>
+        </li>
+        <li ng-if="x.content.options_e" ng-click="checkthis('E','radio',x)">
+            <div class="num">
+                <i ng-class="(x.check == 'E')?'check':''">E</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_e"></div>
+        </li>
+        <li ng-if="x.content.options_f" ng-click="checkthis('F','radio',x)">
+            <div class="num">
+                <i ng-class="(x.check == 'F')?'check':''">F</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_f"></div>
+        </li>
+    </ul>
+</div>
+<div class="button button-cloud" ng-click="showModal()" ng-if="(x.num == answer_list.length-1)">
+    提交
+</div>

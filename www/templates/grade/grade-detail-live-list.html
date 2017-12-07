@@ -1,0 +1,82 @@
+<ion-view hide-tabs>
+  <ion-nav-title>{{liveListDate.course_name}}</ion-nav-title>
+
+  <ion-content class="grade-detail-live-list" scroll="false">
+
+        <div class="detail-live-head">
+            <div class="learn-evalution evalution" ui-sref="main.courseDetailLiveEvalution({course_id: liveListDate.course_id})">
+                <span class="evalution-text">学习<br/>报告</span>
+            </div>
+
+            <div class="detail-content">
+                    <ul class="ranking">
+                        <li>
+                            <span class="number">{{liveListDate.student_score}}</span>
+                            <span class="text">积分</span>
+                        </li>
+                        <li>
+                            <span class="number">{{liveListDate.class_index}}<em>/{{liveListDate.class_student_count}}</em></span>
+                            <span class="text">班级排名</span>
+                        </li>
+                        <li>
+                            <span class="number">{{liveListDate.student_index}}<em>/{{liveListDate.student_count}}</em></span>
+                            <span class="text">综合排名</span>
+                        </li>
+                    </ul>
+            </div>
+            <div class="radius-bottom"></div>
+        </div>
+
+
+        <ion-content style="top: 182px;">
+            <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+
+            <p class="course-nothing" ng-if="liveListDate.liveList.length == 0 && liveListDate.video_url==''">
+                <img ng-src="{{hasLiveDetail ? 'img/load-error.png' : 'img/blank.png'}}">
+                <span class="error-text" ng-show="hasLiveDetail">加载失败, 下拉重新加载</span>
+            </p>
+
+            <!-- 教学视频 -->
+            <div class="detail-content-video" ng-if="liveListDate.video_url">
+                <div class="video">
+                <videogular vg-player-ready="onPlayerReady($API)" vg-auto-play="video.config.autoPlay" vg-error="videoError">
+                        <vg-media vg-src="video.config.sources" vg-preload="true" vg-tracks="video.config.tracks">
+                        </vg-media>
+                        <vg-buffering></vg-buffering>
+                        <vg-controls vg-autohide="video.config.autoHide" vg-autohide-time="video.config.autoHideTime">
+                            <vg-play-pause-button></vg-play-pause-button>
+                            <vg-time-display>{{ currentTime || 0 | date:'mm:ss' }}</vg-time-display>
+                            <vg-scrub-bar>
+                                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                            </vg-scrub-bar>
+                            <vg-time-display>{{ timeLeft || 0 | date:'mm:ss' }}</vg-time-display>
+                            <vg-volume>
+                                <vg-mute-button></vg-mute-button>
+                                <vg-volume-bar></vg-volume-bar>
+                            </vg-volume>
+                            <vg-fullscreen-button></vg-fullscreen-button>
+                        </vg-controls>
+                        <vg-overlay-play></vg-overlay-play>
+                </videogular>
+                </div>
+            </div>
+
+            <div class="detail-live-list-wrap">
+                <div class="view-panel">
+                    <div class="view-panel-cell" flash ng-if="liveListDate.liveList.length" ng-repeat="item in liveListDate.liveList track by $index" ng-click="showDetailPage(item)">
+                        <div class="icon" ng-class="{0: 'icon-edit', 1: 'icon-exercise', 2: 'icon-check'}[item.task_type]"></div>
+                        <div class="view-cell-hd">
+                            <h4 class="ellipse">{{item.task_name}}</h4>
+                            <p class="number">共{{item.task_test_count}}题</p>
+                        </div>
+                        <div class="view-cell-bd">
+                            <span ng-class="{0: 'orange-text', 1: 'orange-text', 2: 'gray-text', 3: 'green-text', 4: 'gray-button'}[item.task_status]">{{item.task_status | courseType:item.task_accuracy:item.deadline_time}}</span>
+                            <span class="gray-text" ng-if="item.task_status==2 || item.task_status==4">{{ item.deadline_time*1000 | date:'MM月dd日 HH:mm' }} 截止</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-content>
+</ion-view>

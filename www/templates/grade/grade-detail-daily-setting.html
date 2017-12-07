@@ -1,0 +1,24 @@
+<ion-view hide-tabs>
+  <ion-nav-title>{{courseData.class_name}}</ion-nav-title>
+    <ion-content class="registers-wrap grade-detail-leave">
+        <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+        <div content-load-status="hasClass" reload-type="2">
+        <div class="list">
+            <div class="item" href="#">
+                <span class="label">班级名称</span><span class="item-note ellipse">{{courseData.class_name}}</span>
+            </div>
+            <div class="item" href="#">
+                <span class="label">班级编号</span><span class="item-note">{{courseData.class_number}}</span>
+            </div>
+            <div class="item" href="#">
+                <span class="label">科目</span><span class="item-note">{{courseData.subject.name || '暂无'}}</span>
+            </div>
+            <div class="item" href="#">
+                <span class="label">年级</span><span class="item-note">{{courseData.grade.name}}</span>
+            </div>
+        </div>
+        <div class="button button-cloud" ng-click="leaveClass()">退出班级</div>
+        </div>
+    </ion-content>
+</ion-view>

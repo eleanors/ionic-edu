@@ -1,0 +1,58 @@
+<div class="sub-title" ng-bind-html="x.content.topic" ng-show="x.content.topic" view-picture>
+</div>
+<div class="sub-answer">
+    <ul>
+        <li ng-if="x.content.options_a">
+            <div class="num">
+                <i ng-if="(x.check.indexOf('A') >= 0 && x.content.answer.indexOf('A') >= 0)" class="check">A</i>
+                <i ng-if="(x.check.indexOf('A') >= 0 && x.content.answer.indexOf('A') == -1)" class="error">A</i>
+                <i ng-if="(x.check.indexOf('A') == -1 && x.content.answer.indexOf('A') == -1)">A</i>
+                <i ng-if="(x.check.indexOf('A') == -1 && x.content.answer.indexOf('A') >= 0)">A</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_a"></div>
+        </li>
+        <li ng-if="x.content.options_b">
+            <div class="num">
+                <i ng-if="(x.check.indexOf('B') >= 0 && x.content.answer.indexOf('B') >= 0)" class="check">B</i>
+                <i ng-if="(x.check.indexOf('B') >= 0 && x.content.answer.indexOf('B') == -1)" class="error">B</i>
+                <i ng-if="(x.check.indexOf('B') == -1 && x.content.answer.indexOf('B') == -1)">B</i>
+                <i ng-if="(x.check.indexOf('B') == -1 && x.content.answer.indexOf('B') >= 0)">B</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_b"></div>
+        </li>
+        <li ng-if="x.content.options_c">
+            <div class="num"><i ng-if="(x.check.indexOf('C') >= 0 && x.content.answer.indexOf('C') >= 0)" class="check">C</i>
+                <i ng-if="(x.check.indexOf('C') >= 0 && x.content.answer.indexOf('C') == -1)" class="error">C</i>
+                <i ng-if="(x.check.indexOf('C') == -1 && x.content.answer.indexOf('C') == -1)">C</i>
+                <i ng-if="(x.check.indexOf('C') == -1 && x.content.answer.indexOf('C') >= 0)">C</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_c"></div>
+        </li>
+        <li ng-if="x.content.options_d">
+            <div class="num"><i ng-if="(x.check.indexOf('D') >= 0 && x.content.answer.indexOf('D') >= 0)" class="check">D</i>
+                <i ng-if="(x.check.indexOf('D') >= 0 && x.content.answer.indexOf('D') == -1)" class="error">D</i>
+                <i ng-if="(x.check.indexOf('D') == -1 && x.content.answer.indexOf('D') == -1)">D</i>
+                <i ng-if="(x.check.indexOf('D') == -1 && x.content.answer.indexOf('D') >= 0)">D</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_d"></div>
+        </li>
+        <li ng-if="x.content.options_e">
+            <div class="num">
+                <i ng-if="(x.check.indexOf('E') >= 0 && x.content.answer.indexOf('E') >= 0)" class="check">E</i>
+                <i ng-if="(x.check.indexOf('E') >= 0 && x.content.answer.indexOf('E') == -1)" class="error">E</i>
+                <i ng-if="(x.check.indexOf('E') == -1 && x.content.answer.indexOf('E') == -1)">E</i>
+                <i ng-if="(x.check.indexOf('E') == -1 && x.content.answer.indexOf('E') >= 0)">E</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_e"></div>
+        </li>
+        <li ng-if="x.content.options_f">
+            <div class="num">
+                <i ng-if="(x.check.indexOf('F') >= 0 && x.content.answer.indexOf('F') >= 0)" class="check">F</i>
+                <i ng-if="(x.check.indexOf('F') >= 0 && x.content.answer.indexOf('F') == -1)" class="error">F</i>
+                <i ng-if="(x.check.indexOf('F') == -1 && x.content.answer.indexOf('F') == -1)">F</i>
+                <i ng-if="(x.check.indexOf('F') == -1 && x.content.answer.indexOf('F') >= 0)">F</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_f"></div>
+        </li>
+    </ul>
+</div>

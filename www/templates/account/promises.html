@@ -1,0 +1,23 @@
+<ion-view hide-tabs="true">
+    <ion-nav-bar class="bar-cloud">
+        <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-title>我的信息</ion-nav-title>
+
+    <ion-content scroll="false" class="promises-wrap">
+        <div class="list">
+            <div class="item" ng-click="modifyAvatar()">
+                头像<span class="ion-ios-arrow-right arrow-right"></span><span class="item-note avatar"><img ng-src="{{auth.img_url | avatarFilter:auth.sex}}"></span>
+            </div>
+            <div class="item" ng-click="modifyName()">
+                姓名<span class="ion-ios-arrow-right arrow-right"></span><span class="item-note">{{auth.username}}</span>
+            </div>
+            <div class="item" ng-click="modifySex()">
+                性别<span class="ion-ios-arrow-right arrow-right"></span><span class="item-note">{{auth.sex==0?'男':auth.sex==1?'女':''}}</span>
+            </div>
+            <div class="item" ng-click="modifyTime()">
+                生日<span class="ion-ios-arrow-right arrow-right"></span><span class="item-note">{{auth.birthday_time | date : 'yyyy年MM月dd日'}}</span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

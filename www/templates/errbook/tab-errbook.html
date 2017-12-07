@@ -1,0 +1,20 @@
+<ion-view>
+    <ion-nav-title>错题本</ion-nav-title>
+    <ion-content scrollbar-y="false">
+        <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+        <p class="course-nothing" ng-if="list.length == 0 && initstatus">
+            <img ng-src="{{status ? 'img/load-error.png' : 'img/blank.png'}}">
+            <span class="error-text">{{status ? '网络不佳, 下拉刷新重新加载' : '还没有错题哦'}}</span>
+        </p>
+
+        <div class="errbook" ng-if="list.length > 0">
+            <ul class="list">
+                <li class="item item-icon-left" flash ui-sref="main.errbook-list({id:item.subject_id})" ng-repeat="item in list">
+                    <i class="icon ion-{{item.name}}"></i> {{item.subject_name}}
+                    <span class="badge balanced-bg">{{item.test_count}}道</span>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

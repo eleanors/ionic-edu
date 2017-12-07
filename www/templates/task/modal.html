@@ -1,0 +1,34 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable modal-header">
+        <div class="time">
+            {{showTime}}
+        </div>
+        <h1 class="title">答题卡</h1>
+        <div class="buttons" ng-click="hideModal()">
+            <i class="ion ion-android-close"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content class="modal-content" has-bouncing="true">
+        <div class="modal-list" ng-show="radio.length > 0">
+            <div class="title">单选题</div>
+            <ul>
+                <li ng-repeat="x in radio track by $index" ng-class="(x.is_answered == 1 || (answer_list[x.num].check))?'success':''" ng-click="dump(x.num)">{{x.test_number}}</li>
+            </ul>
+        </div>
+        <div class="modal-list" ng-show="checkbox.length > 0">
+            <div class="title">多选题</div>
+            <ul>
+                <li ng-repeat="x in checkbox track by $index" ng-class="(x.is_answered == 1 || (answer_list[x.num].check.length))?'success':''" ng-click="dump(x.num)">{{x.test_number}}</li>
+            </ul>
+        </div>
+        <div class="modal-list" ng-show="content.length > 0">
+            <div class="title">解答题</div>
+            <ul>
+                <li ng-repeat="x in content track by $index" ng-class="(x.is_answered == 1 || (answer_list[x.num].check.length))?'success':''" ng-click="dump(x.num)">{{x.test_number}}</li>
+            </ul>
+        </div>
+        <div class="button button-cloud" ng-click="submit()">
+            交作业
+        </div>
+    </ion-content>
+</ion-modal-view>

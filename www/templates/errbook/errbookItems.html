@@ -1,0 +1,98 @@
+<ion-view hide-tabs>
+    <ion-nav-title>{{lore_name}}</ion-nav-title>
+    <ion-content scroll="false" class="errbook-items">
+        <div class="bg" ng-show="(option_type || option_diff || option_grasp)" ng-click="close()" on-drag-up="onscroll()"></div>
+        <div class="options " ng-class="(option_type || option_diff || option_grasp)?'open':''">
+            <div class="options-title">
+                <span ng-click="open('type')">
+                    {{typelist[data.test_type]}}
+                    <i class="icon" ng-class="(option_type)?'ion-arrow-up-b':'ion-arrow-down-b'"></i>
+                </span>
+                <span ng-click="open('diff')">
+                    {{option_name}}
+                    <i class="icon" ng-class="(option_diff)?'ion-arrow-up-b':'ion-arrow-down-b'"></i>
+                </span>
+                <span ng-click="open('grasp')">
+                    {{grasp_name}}
+                    <i class="icon" ng-class="(option_grasp)?'ion-arrow-up-b':'ion-arrow-down-b'"></i>
+                </span>
+            </div>
+            <div ng-show="option_type" class="options-info options-type">
+                <ul>
+                    <li ng-repeat="(y,x) in typelist" ng-class="(data.test_type == y)?'active':''" ng-click="check_type(y)">{{x}}</li>
+                </ul>
+            </div>
+            <div ng-show="option_diff" class="options-info">
+                <ul>
+                    <li ng-click="check_diff(0,'全部难度')" ng-class="(data.test_difficulty_level == 0)?'active':''">全部难度</li>
+                    <li ng-click="check_diff(1,'简单')" ng-class="(data.test_difficulty_level == 1)?'active':''">简单</li>
+                    <li ng-click="check_diff(2,'较易')" ng-class="(data.test_difficulty_level == 2)?'active':''">较易</li>
+                    <li ng-click="check_diff(3,'中等')" ng-class="(data.test_difficulty_level == 3)?'active':''">中等</li>
+                    <li ng-click="check_diff(4,'较难')" ng-class="(data.test_difficulty_level == 4)?'active':''">较难</li>
+                    <li ng-click="check_diff(5,'困难')" ng-class="(data.test_difficulty_level == 5)?'active':''">困难</li>
+                </ul>
+            </div>
+            <div ng-show="option_grasp" class="options-info">
+                <ul>
+                    <li ng-click="check_grasp(2,'全部难度')" ng-class="(data.is_grasp == 2)?'active':''">全部</li>
+                    <li ng-click="check_grasp(1,'已掌握')" ng-class="(data.is_grasp == 1)?'active':''">已掌握</li>
+                    <li ng-click="check_grasp(0,'未掌握')" ng-class="(data.is_grasp == 0)?'active':''">未掌握</li>
+                </ul>
+            </div>
+        </div>
+
+        <ion-scroll style="margin-top: 50px;" direction="y" scroll-height="50" scrollbar-y="false" has-bouncing="true" delegate-handle="mainScroll">
+            <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+            <div class="title">全部错题 ({{test_count || 0}})</div>
+            <p class="course-nothing" ng-if="list.length == 0">
+                <img ng-src="img/blank.png">
+                <span class="error-text">还没有该选项的错题哦~</span>
+            </p>
+            <div class="content" ng-repeat="(s,item) in list" flash>
+                <div style="width: 100%;overflow: hidden; max-height: 200px;" ng-click="showModal(item)">
+                    <div class="num">{{s+1}}、{{typelist[item.test_type]}}</div>
+                    <div class="topic" ng-bind-html="item.topic | pictureLoadComplete"></div>
+                    <div class="option" ng-if="item.options_a">
+                        <span class="option-name">A.</span>
+                        <div class="option-content" ng-bind-html="item.options_a | pictureLoadComplete"></div>
+                    </div>
+                    <div class="option" ng-if="item.options_b">
+                        <span class="option-name">B.</span>
+                        <div class="option-content" ng-bind-html="item.options_b | pictureLoadComplete"></div>
+                    </div>
+                    <div class="option" ng-if="item.options_c">
+                        <span class="option-name">C.</span>
+                        <div class="option-content" ng-bind-html="item.options_c | pictureLoadComplete"></div>
+                    </div>
+                    <div class="option" ng-if="item.options_d">
+                        <span class="option-name">D.</span>
+                        <div class="option-content" ng-bind-html="item.options_d | pictureLoadComplete"></div>
+                    </div>
+                    <div class="option" ng-if="item.options_e">
+                        <span class="option-name">E.</span>
+                        <div class="option-content" ng-bind-html="item.options_e | pictureLoadComplete"></div>
+                    </div>
+                    <div class="option" ng-if="item.options_f">
+                        <span class="option-name">F.</span>
+                        <div class="option-content" ng-bind-html="item.options_f | pictureLoadComplete"></div>
+                    </div>
+                </div>
+
+                <div class="diff">
+                    <span>难度</span>
+                    <span ng-class="(item.test_difficulty <= 1)?'star':''"></span>
+                    <span ng-class="(item.test_difficulty <= 0.84)?'star':'unstar'"></span>
+                    <span ng-class="(item.test_difficulty <= 0.74)?'star':'unstar'"></span>
+                    <span ng-class="(item.test_difficulty <= 0.59)?'star':'unstar'"></span>
+                    <span ng-class="(item.test_difficulty <= 0.49)?'star':'unstar'"></span>
+                    <span class="fr print" ng-click="setPrint(item)" ng-class="((item.is_print == 1)?'isprint':'unprint')">{{(item.is_print == 1)?'取消打印':'加入打印'}}</span>
+                    <span class="fr grasp" ng-click="setGrasp(item)" ng-class="((item.is_grasp == 1)?'isgrasp':'ungrasp')">{{(item.is_grasp == 1)?'已掌握':'未掌握'}}</span>
+                </div>
+            </div>
+            <p class="more" ng-if="!page_data.status && !page_data.has_next && page_data.page>1">没有更多数据了</p>
+            <p class="more" ng-if="page_data.status && page_data.has_next" ng-click="reloadMore()">加载失败, 点击<em>重新加载</em></p>
+            <ion-infinite-scroll class="infinite-scroll" immediate-check="false" ng-if="page_data.has_next && !page_data.status" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+        </ion-scroll>
+        <div class="printBTN" ui-sref="main.errbook-mark" >已选<br />{{err_test_count || 0}}</div>
+    </ion-content>
+</ion-view>

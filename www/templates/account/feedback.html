@@ -1,0 +1,14 @@
+<ion-view hide-tabs>
+  <ion-nav-title>意见反馈</ion-nav-title>
+    <ion-nav-bar class="bar-cloud">
+        <ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content scroll="false" class="padding">
+        <div class="feedback-wrap">
+            <textarea class="feed-textarea" placeholder="请提供您宝贵意见" rows="8" ng-model="content.feedbackContent" max-length="200"></textarea>
+            <div class="char-limit">{{content.feedbackContent?content.feedbackContent.length:0}}/200</div>
+        </div>
+        <div class="button button-cloud" ng-click="submit()">提交</div>
+    </ion-content>
+</ion-view>

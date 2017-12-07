@@ -1,0 +1,556 @@
+@import './mixin';
+/* 时间线 -- 列表 通用*/
+.view-time-line {
+    position: relative;
+    padding: 10px 0;
+
+    &:before {
+        @include setLeftLine();
+        left: 10px;
+        top: 10px;
+        bottom: 10px;
+    }
+
+    .time-line-cell {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 10px 0 24px;
+        margin-left: -2px;
+        position: relative;
+
+        .time-line-hd {
+            padding-right: 10px;
+            h4 {
+                color: #656565;
+                font-size: 16px;
+                font-weight: 400;
+            }
+            .times {
+                color: #999;
+            }
+            em {
+                color: #ffa96f;
+                margin-left: 5px;
+            }
+        }
+        .time-line-bd {
+            display: flex;
+            align-items: center;
+            font-family: arial;
+            white-space: nowrap;
+
+            .icon-score {
+                width: 14px;
+                height: 14px;
+                margin-right: 4px;
+            }
+        }
+    }
+
+    .point {
+        position: absolute;
+        left: 9.4px;
+        top: 16px;
+        width: 6px;
+        height: 6px;
+        border-radius: 6px;
+        @include setGradient();
+    }
+}
+
+
+
+/* 直播详情列表 */
+.grade-detail-live {
+    .detail-live-head {
+        position: relative;
+        height: 230px;
+        overflow: hidden;
+        @include setGradient();
+
+        .title {
+            margin: 10px 0;
+            text-align: center;
+            color: #fff;
+        }
+    }
+
+    .detail-content {
+        position: absolute;
+        bottom: 5px;
+        left: 15px;
+        right: 15px;
+        z-index: 2;
+        background: #fff;
+        border-radius: 5px 5px;
+        box-shadow: 0 0px 10px 0px rgba(200, 200, 200, 0.2);
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 64px;
+            margin-left: -32px;
+
+            position: absolute;
+            left: 50%;
+            top: -32px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+        }
+        .name {
+            margin-top: 38px;
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            height: 20px;
+        }
+
+        .ranking {
+
+            margin: 20px 20px;
+            overflow: hidden;
+
+            li {
+                float: left;
+                width: 33.333%;
+                text-align: center;
+            }
+
+            span {
+                display: block;
+            }
+
+            .number {
+                color: #ffa96f;
+                font-size: 24px;
+                font-family: arial;
+            }
+            em {
+                font-size: 14px;
+            }
+            .text {
+                color: #999;
+                margin-top: 4px;
+            }
+        }
+
+    }
+
+    .radius-bottom {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 36px;
+        background: url(../img/account-bottom-bg.png) no-repeat center bottom;
+        background-size: cover;
+    }
+
+    .detail-live-list {
+        margin: 0px 15px 15px;
+        background: #fff;
+        border-radius: 5px 5px;
+        box-shadow: 0 0px 10px 0px rgba(200, 200, 200, 0.2);
+
+        .time-line-hd {
+            width: 60%;
+            white-space: nowrap;
+        }
+
+        .text-button {
+            display: block;
+            padding: 1px 10px;
+            color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            background: #dadfe7;
+        }
+
+        .score-90 {
+            color: #3ec1ad;
+            .icon-score {
+                background: url(../img/icon-score-1.png) no-repeat center center;
+                background-size: 100%;
+            }
+        }
+
+        .score-80 {
+            color: #ffa96f;
+            .icon-score {
+                background: url(../img/icon-score-2.png) no-repeat center center;
+                background-size: 100%;
+            }
+        }
+
+        .score-70 {
+            color: #ff6f6f;
+            .icon-score {
+                background: url(../img/icon-score-3.png) no-repeat center center;
+                background-size: 100%;
+            }
+        }
+    }
+}
+
+
+
+/*班级详情-普通*/
+
+.grade-detail-daily {
+
+    .grade-detail-header {
+        width: 100%;
+        height: 200px;
+        background: -webkit-linear-gradient(left, #42e695, #3bb2b8);
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 40px 60px 10px;
+            text-align: center;
+
+            span {
+                display: block;
+                color: #fff;
+            }
+            .number {
+                font-size: 26px;
+                font-family: arial;
+            }
+            .title {
+                margin-top: 10px;
+            }
+        }
+
+        .puzzle-left {
+            position: absolute;
+            left: 5%;
+            top: 25%;
+            width: 100px;
+            height: 28px;
+            background: url('../img/puzzle.png') no-repeat center;
+            background-size: 100%;
+        }
+
+        .puzzle-right {
+            position: absolute;
+            right: 15%;
+            top: 10%;
+            width: 100px;
+            height: 28px;
+            background: url('../img/puzzle.png') no-repeat center;
+            background-size: 60%;
+        }
+        .wave-bottom {
+            width: 100%;
+            height: 100px;
+            margin: 0 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: url('../img/wave-bottoms.png') no-repeat center bottom;
+            background-size: contain;
+        }
+    }
+
+    .detail-daily-list {
+        margin: 10px 10px;
+        background: #fff;
+        box-shadow: 2px 2px 10px rgba(200,200,200,.2);
+
+        .view-panel-cell {
+            padding: 0 0;
+            &:before {
+                left: 2px;
+            }
+        }
+
+        .view-cell-hd {
+            position: relative;
+            padding: 10px 0 10px 20px;
+            width: 60%;
+
+            &::before {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 4px;
+                height: 100%;
+                z-index: 2;
+                border-radius: 5px 0 0 5px;
+                background: linear-gradient(to bottom, #ff7b58, #ffbb4e);
+            }
+        }
+
+        &:nth-child(2n+1) .view-cell-hd::before{
+                background: linear-gradient(to bottom, #3bb3b7, #42e595);
+        }
+
+        .view-cell-bd {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+
+            span {
+                margin-right: 10px;
+            }
+        }
+        h4 {
+            color: #656565;
+            font-weight: 400;
+            font-size: 16px;
+            font-family: arial;
+        }
+        .number {
+            font-size: 14px;
+            color: #ababab;
+        }
+
+        .gray-button {
+            display: block;
+            width: 74px;
+            padding: 1px 0;
+            color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            background: #dadfe7;
+        }
+
+        .orange-text {
+            color: #ffa96f;
+            white-space: nowrap;
+        }
+
+        .green-text {
+            color: #3dbfaf;
+            white-space: nowrap;
+        }
+        .gray-text {
+            color: #ababab;
+            white-space: nowrap;
+            margin-top: 10px;
+        }
+    }
+
+}
+
+
+.grade-detail-leave {
+        .item-note {
+                display: block;
+                max-width: 60%;
+        }
+}
+
+
+/* 直播详情列表 */
+.grade-detail-live-list {
+
+        .detail-live-head {
+            position: relative;
+            height: 186px;
+            overflow: hidden;
+            background: url('../img/live-list-head.png') no-repeat center bottom, linear-gradient(90deg, #42e695, #3bb2b8);
+            background-size: 100%;
+        }
+
+        .detail-content {
+            color: #fff;
+            .ranking {
+
+                margin: 20px 20px;
+                overflow: hidden;
+
+                li {
+                    float: left;
+                    width: 33.333%;
+                    text-align: center;
+                }
+
+                span {
+                    display: block;
+                }
+
+                .number {
+                    font-size: 24px;
+                    font-family: arial;
+                }
+                em {
+                    font-size: 14px;
+                }
+                .text {
+                    margin-top: 4px;
+                }
+            }
+
+        }
+
+        .radius-bottom {
+            width: 100%;
+            height: 16px;
+            border-radius: 10px 10px 0 0;
+            background: #fafafa;
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .detail-content-video {
+            height: 200px;
+            margin: 0 10px 10px 10px;
+            background: #eee;
+            overflow: hidden;
+            .video {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+
+        .detail-live-list-wrap {
+            margin: 10px 10px;
+
+            .view-panel {
+                box-shadow: none;
+            }
+
+            .view-panel-cell {
+                padding: 16px 10px;
+                margin-bottom: 10px;
+                border-radius: 10px 10px;
+                background: #fff;
+                box-shadow: 0 0px 10px 0px rgba(200,200,200,.2);
+                &:before {
+                    left: 2px;
+                }
+            }
+
+            .view-cell-hd {
+                position: relative;
+                padding: 0 0 0 10px;
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+            }
+
+            &:nth-child(2n+1) .view-cell-hd::before{
+                    background: linear-gradient(to bottom, #3bb3b7, #42e595);
+            }
+
+            .view-cell-bd {
+                display: flex;
+                align-items: flex-end;
+                flex-direction: column;
+
+                span:first-child {
+                    margin: 10px 0;
+                }
+            }
+
+            .icon {
+                width: 54px;
+                height: 54px;
+            }
+
+            .icon-edit {
+                background: url(../img/icon-live-01.png) no-repeat center;
+                background-size: 100%;
+            }
+            .icon-exercise {
+                background: url(../img/icon-live-02.png) no-repeat center;
+                background-size: 100%;
+            }
+            .icon-check {
+                background: url(../img/icon-live-03.png) no-repeat center;
+                background-size: 100%;
+            }
+
+            h4 {
+                color: #656565;
+                font-weight: 400;
+                font-size: 16px;
+                font-family: arial;
+            }
+            .number {
+                font-size: 14px;
+                color: #ababab;
+            }
+
+
+            .gray-button {
+                display: block;
+                width: 74px;
+                padding: 1px 0;
+                color: #fff;
+                border-radius: 10px;
+                text-align: center;
+                background: #dadfe7;
+            }
+            .orange-text {
+                color: #ffa96f;
+                white-space: nowrap;
+            }
+
+            .green-text {
+                color: #3dbfaf;
+                white-space: nowrap;
+            }
+            .gray-text {
+                color: #ababab;
+                white-space: nowrap;
+            }
+        }
+}
+
+
+
+
+.learn-evalution {
+    width: 84px;
+    height: 84px;
+    border-radius: 100%;
+    margin: 5px auto;
+    background: rgba(255,255,255,.4);
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    .evalution-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 60px;
+        height: 60px;
+        margin: 12px;
+        border-radius: 100%;
+        background: #fff;
+
+        color: #33db95;
+        font-size: 16px;
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 72px;
+            height: 72px;
+            border-radius: 100%;
+            background: rgba(255,255,255,.4);
+
+            position: absolute;
+            left: -6px;
+            top: -6px;
+            z-index: -1;
+        }
+    }
+}

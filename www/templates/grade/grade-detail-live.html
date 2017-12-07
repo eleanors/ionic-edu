@@ -1,0 +1,88 @@
+<ion-view hide-tabs>
+  <ion-nav-title>{{liveDate.group_name}}</ion-nav-title>
+    <ion-content class="grade-detail-live" scroll="false">
+
+        <div class="detail-live-head">
+            <div class="title ellipse">{{liveDate.school_name}}</div>
+
+            <div class="detail-content">
+                    <p class="avatar"><img ng-src="{{userData.avatar | avatarFilter:userData.sex}}"></p>
+                    <h4 class="name ellipse">{{liveDate.student_name}}</h4>
+
+                    <ul class="ranking">
+                        <li>
+                            <span class="number">{{liveDate.student_score}}</span>
+                            <span class="text">积分</span>
+                        </li>
+                        <li>
+                            <span class="number">{{liveDate.class_index}}<em>/{{liveDate.class_student_count}}</em></span>
+                            <span class="text">班级排名</span>
+                        </li>
+                        <li>
+                            <span class="number">{{liveDate.student_index}}<em>/{{liveDate.student_count}}</em></span>
+                            <span class="text">综合排名</span>
+                        </li>
+                    </ul>
+            </div>
+            <div class="radius-bottom"></div>
+        </div>
+
+        <ion-content style="top:240px;" class="detail-live-wrap">
+            <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+            <p class="course-nothing" ng-if="liveDate.LiveList.length == 0">
+                <img ng-src="{{hasLiveDetail ? 'img/load-error.png' : 'img/blank.png'}}">
+                <span class="error-text" ng-show="hasLiveDetail">加载失败, 下拉重新加载</span>
+            </p>
+
+            <div class="detail-live-list" ng-if="liveDate.LiveList.length">
+                <div class="view-time-line">
+
+                    <div class="time-line-cell" flash ng-repeat="item in liveDate.LiveList track by $index" ng-click="showDetailListPage(item)">
+                        <span class="point"></span>
+                        <div class="time-line-hd">
+                            <h4 class="ellipse">{{item.course_name}}</h4>
+                            <p class="times">{{item.start_time}} <em ng-if="item.course_status!=0">{{item.is_commit?'':'作业未做'}}</em></p>
+                        </div>
+                        <div class="time-line-bd" ng-if="item.course_status==1" ng-class="{'score-90': item.course_accuracy>=90, 'score-80': item.course_accuracy>=60 && item.course_accuracy<90, 'score-70': 60>item.course_accuracy}"><span class="icon-score"></span>{{item.course_accuracy}}%正确</div>
+
+                        <div class="time-line-bd" ng-if="item.course_status==0"><span class="text-button">未开课</span></div>
+                    </div>
+
+                    <!--div class="time-line-cell">
+                        <span class="point"></span>
+                        <div class="time-line-hd">
+                            <h4 class="ellipse">第一讲  空间想象力的初步培养</h4>
+                            <p class="time">03-31  08：00 <em>作业未做</em></p>
+                        </div>
+                        <div class="time-line-bd score-90"><span class="icon-score"></span>90%正确</div>
+                    </div>
+                    <div class="time-line-cell">
+                        <span class="point"></span>
+                        <div class="time-line-hd">
+                            <h4 class="ellipse">第一讲  空间想象力的初步培养</h4>
+                            <p class="time">03-31  08：00</p>
+                        </div>
+                        <div class="time-line-bd score-80"><span class="icon-score"></span>78%正确</div>
+                    </div>
+                    <div class="time-line-cell">
+                        <span class="point"></span>
+                        <div class="time-line-hd">
+                            <h4 class="ellipse">第一讲  空间想象力的初步培养</h4>
+                            <p class="time">03-31  08：00</p>
+                        </div>
+                        <div class="time-line-bd score-70"><span class="icon-score"></span>78%正确</div>
+                    </div>
+                    <div class="time-line-cell">
+                        <span class="point"></span>
+                        <div class="time-line-hd">
+                            <h4 class="ellipse">第一讲  空间想象力的初步培养</h4>
+                            <p class="time">03-31  08：00</p>
+                        </div>
+                        <div class="time-line-bd"><span class="text-button">未开课</span></div>
+                    </div-->
+                </div>
+            </div>
+        </ion-content>
+    </ion-content>
+</ion-view>

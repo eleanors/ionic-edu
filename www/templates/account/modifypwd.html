@@ -1,0 +1,22 @@
+<ion-view hide-tabs>
+    <ion-nav-title>修改密码</ion-nav-title>
+    <ion-content scroll="false" class="register-wrap">
+        <div class="list">
+            <form name="modifyPwdForm">
+                <div class="item item-input">
+                    <span class="input-label">密码</span>
+                    <input type="password" name="initialPwd" placeholder="请输入原密码" ng-model="userData.initialPwd" clear-input="5" max-length="20">
+                </div>
+                <div class="item item-input">
+                    <span class="input-label">新密码</span>
+                    <input type="password" name="newPwd" placeholder="请输入新密码" ng-model="userData.newPwd" clear-input="5" max-length="20">
+                </div>
+                <div class="item item-input">
+                    <span class="input-label">新密码</span>
+                    <input type="password" name="reNewpwd" placeholder="请确认新密码" ng-model="userData.reNewpwd" clear-input="5" max-length="20">
+                </div>
+            </form>
+        </div>
+        <div class="button button-cloud" ng-click="modifyPwd()">修改密码</div>
+    </ion-content>
+</ion-view>

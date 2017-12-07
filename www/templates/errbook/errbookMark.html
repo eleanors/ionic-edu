@@ -1,0 +1,34 @@
+<ion-view hide-tabs>
+    <ion-nav-title>已选题目</ion-nav-title>
+    <ion-content scroll="false">
+        <ion-content style="top: 2px; bottom: 60px">
+            <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+            <p class="course-nothing" ng-if="markData.length == 0">
+                <img ng-src="{{status ? 'img/load-error.png' : 'img/blank.png'}}">
+                <span class="error-text">{{status ? '网络不佳, 下拉刷新重新加载' : '还没有添加错题哦'}}</span>
+            </p>
+            <div class="mark-wrap" ng-repeat="items in markData track by $index" ng-if="items">
+                <div class="mark-list-hd" flash ng-click="selectAll(items.test_type)" ng-class="{selected: items.checked}" ng-if="items.topic.length">
+                    <i class="icon-checked"></i>{{items.test_type | TestType}} ({{items.topic.length}})
+                </div>
+                <div class="mark-list-bd">
+                    <div class="mark-list-item" flash ng-repeat="item in items.topic track by $index" ng-class="{'selected': item.checked}" ng-click="select(item, item.test_type)">
+                        <i class="icon-checked"></i>
+                        <div class="mark-content">
+
+                            <div class="topic" ng-bind-html="item.topic | addListIndex:item.index | pictureLoadComplete"></div>
+                            <div topic-option-list="item"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <div class="err-book-operate" ng-show="markData.length">
+            <span class="delete" ng-click="delete()">删除</span>
+            <span class="move ion-arrow-up-b" ng-click="move(-1)" ng-class="upDisabled()"></span>
+            <span class="move ion-arrow-down-b" ng-click="move(1)" ng-class="downDisabled()"></span>
+            <!--span class="share" ng-click="printItems()">打印 ({{selectedCount()}})</span-->
+            <span class="share" ng-click="printItems()">打印</span>
+        </div>
+    </ion-content>
+</ion-view>

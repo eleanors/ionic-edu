@@ -1,0 +1,21 @@
+<ion-view hide-tabs="true">
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-nav-title>{{task.task_name}}</ion-nav-title>
+    <ion-content class="task-wrap">
+        <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+        <div content-load-status="hasTask" reload-type="2" show-reload-btn="false">
+            <div class="list">
+                <div class="item" href="#">
+                    <span class="label">作业名称</span><span class="item-note name ellipse">{{task.task_name}}</span>
+                </div>
+                <div class="item" href="#">
+                    <span class="label">截止时间</span><span class="item-note" ng-if="task.deadline_time">{{ task.deadline_time*1000 | date:'MM月dd日 HH:mm' }} 截止</span>
+                </div>
+                <div class="item" href="#">
+                    <span class="label">完成人数</span><span class="item-note">{{task.answer_count}}/{{task.user_count}}</span>
+                </div>
+            </div>
+            <div class="button button-cloud" ng-click="start()">开始作业</div>
+        </div>
+    </ion-content>
+</ion-view>

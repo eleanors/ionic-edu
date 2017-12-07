@@ -1,0 +1,52 @@
+<ion-view hide-tabs>
+    <ion-nav-title>{{subject_name}}</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-setting" ng-click="open()">
+            {{option_name}}
+            <i class="ion" ng-class="(openoption)?'ion-arrow-up-b':'ion-arrow-down-b'"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content scroll="false" class="errbook-list">
+        <div class="bg" ng-show="openoption" ng-click="close()"></div>
+        <div class="options " ng-class="(openoption)?'open':''">
+            <!--<div class="options-title" ng-click="open()">-->
+                <!--<span>-->
+                  <!--{{option_name}}-->
+                  <!--<i class="icon" ng-class="(openoption)?'ion-arrow-up-b':'ion-arrow-down-b'"></i>-->
+                <!--</span>-->
+            <!--</div>-->
+            <div ng-show="openoption" class="options-info">
+                <ul>
+                    <li ng-click="options(0,'全部')" ng-class="(months == 0)?'active':''">全部</li>
+                    <li ng-click="options(1,'最近一月')" ng-class="(months == 1)?'active':''">最近一月</li>
+                    <li ng-click="options(3,'最近三月')" ng-class="(months == 3)?'active':''">最近三月</li>
+                    <li ng-click="options(6,'最近半年')" ng-class="(months == 6)?'active':''">最近半年</li>
+                    <li ng-click="options(12,'最近一年')" ng-class="(months == 12)?'active':''">最近一年</li>
+                </ul>
+            </div>
+        </div>
+
+        <ion-scroll direction="y" scroll-height="-21" scrollbar-y="false" has-bouncing="true" delegate-handle="mainScroll">
+            <div ng-class="(openoption)?'info':''" style="padding-bottom: 20px;">
+                <!--<div class="title">-->
+                    <!--全部错题-->
+                    <!--<span class="fr">{{counts || 0}}</span>-->
+                    <!--<i class="icon ion-ios-arrow-right"></i>-->
+                <!--</div>-->
+                <ul class="list">
+                    <li class="item item-icon-right" flash ui-sref="main.errbook-items({subject_id: id,lore_id: 0, months: months})" style="margin-bottom: 20px;">
+                        全部错题
+                        <span class="fr">{{counts || 0}}</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </li>
+                    <li class="item item-icon-right" ng-repeat="item in list" ui-sref="main.errbook-items({subject_id: id,lore_id: item.lore_id, months: months})" flash>
+                        {{item.lore_name}}
+                        <span class="fr">{{item.test_count}}</span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </li>
+                </ul>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

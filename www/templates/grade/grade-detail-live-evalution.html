@@ -1,0 +1,71 @@
+<ion-view hide-tabs>
+  <ion-nav-title>学习数据</ion-nav-title>
+    <ion-content class="grade-detail-evalution">
+        <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+        <div class="live-evalution-head course-evalution">
+            <div class="title ellipse">{{evalutionData.school_name}}</div>
+            <div class="title course-name"><span class="ellipse">{{evalutionData.course_name}}</span> <span class="ellipse">{{evalutionData.student_name}}</span></div>
+
+            <div class="evalution-level">
+                <div class="level">{{evalutionData.synthesis_level}}</div>
+            </div>
+            <div class="evalution-wrap">
+                <circle-bubble persent="evalutionData.student_accuracy" title="正确率"></circle-bubble>
+                <circle-bubble persent="evalutionData.average_accuracy" title="平均"></circle-bubble>
+                <circle-bubble persent="evalutionData.max_accuracy" title="最高"></circle-bubble>
+            </div>
+
+
+            <p class="cloud cloud-left"></p><p class="cloud cloud-middle"></p><p class="cloud cloud-right"></p>
+
+            <p class="puzzle-left"></p><p class="puzzle-right"></p><p class="wave-bottom"></p>
+            
+            <div class="radius-bottom">
+                    <span class="name">本节课排名</span>
+                    <span class="order">{{evalutionData.student_index}}/{{evalutionData.class_student_count}}</span>
+            </div>
+        </div>
+
+        <div class="view-score-level">
+            <div class="score-level-type">
+                
+                <h4 class="level-type-title">知识点</h4>
+                <p class="level-type-list">
+                    <span class="self-score"><em></em>我的分</span>
+                    <span class="mean-score"><em></em>平均分</span>
+                    <span class="top-score"><em></em>最高分</span>
+                </p>
+            </div>
+
+            <p class="course-nothing" ng-if="evalutionData.lore_list.length==0">
+                <img ng-src="{{status ? 'img/load-error.png' : 'img/blank.png'}}">
+                <span class="error-text">{{status? '加载失败, 下拉刷新重新加载' : '没有相关知识点数据'}}</span>
+            </p>
+            
+            <div class="score-level-wrap" ng-if="evalutionData.lore_list.length>0">
+                <div class="score-level-cell" ng-repeat="(key,item) in evalutionData.lore_list track by $index">
+                    <div class="circle-point"></div>
+                    <h4 class="score-level-hd ellipse">{{item.lore_name}}</h4>
+                    <div class="score-level-bd">
+                        <p class="score-list">
+                            <em class="self-score" style="left:{{distance[key].student_score}}%" ng-bind="item.student_score | parseIntFilter"></em>
+                        </p>
+                        <p class="colors-line">
+                            <em class="self-score" style="left:{{item.student_score | reviseScoreFilter}}%"></em>
+                            <em class="mean-score" style="left:{{item.average_score | reviseScoreFilter}}%"></em>
+                            <em class="top-score" style="left:{{item.max_score | reviseScoreFilter}}%"></em>
+                        </p>
+                        <p class="colors-shade" style="width: {{item.student_score+1}}%">
+                            <em class="colors-shade-top"></em><em class="colors-shade-bottom"></em>
+                        </p>
+                        <p class="score-list">
+                            <em class="mean-score" style="left:{{distance[key].average_score}}%" ng-bind="item.average_score | parseIntFilter"></em>
+                            <em class="top-score" style="left:{{distance[key].max_score}}%" ng-bind="item.max_score| parseIntFilter"></em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,84 @@
+<ion-view hide-tabs="true" class="task">
+    <ion-nav-title>{{info.task_name}}</ion-nav-title>
+    <ion-nav-buttons side="right" class="time">
+        <button class="button button-clear">
+            {{showTime}}
+        </button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="false" class="task-start task-info-details" scroll="false" has-bouncing="true">
+
+        <div content-load-status="hasAnswerList" reload-view-handler="reloadAnswerList()" show-reload-btn="true" reload-type="1">
+
+        <div class="title">
+            <span>{{$index+1}}</span>/{{answer_list.length}}&nbsp;&nbsp;&nbsp; {{thisQuestion.test_type | TestType}}
+            <div class="icon">
+                <i class="ion ion-checkmark-circled" ng-if="thisQuestion.answer_type == 1"></i>
+                <i class="ion ion-close-circled error" ng-if="thisQuestion.answer_type == 2"></i>
+                <span class="bandui" ng-if="thisQuestion.answer_type >= 3"></span>
+            </div>
+            <div class="answer fr" ng-click="showModal()">
+                <i class="ion ion-ios-paper-outline"></i> 答题卡
+            </div>
+        </div>
+
+        <ion-slide-box class="subject" on-slide-changed="change($index)" auto-play="false" bounce="true" does-continue="false" scroll-height="62" delegate-handle="Slide">
+            <ion-slide ng-repeat="(y,x) in answer_list track by $index">
+                <!--单选-->
+                 <ion-scroll direction="y" scrollbar-y="false" has-bouncing="true" style="overflow: auto; position: relative;" scroll-height="152" ng-class="{'sub-radio' : (x.test_type == 1) , 'sub-checkbox' : (x.test_type == 2),'sub-content': (x.test_type == 3)}">
+                    <div content-load-status="x.status" reload-view-handler="reloadListItem()" show-reload-btn="true" reload-type="1">
+                        <div ng-include="'templates/task/info/radio.html'" ng-if="x.test_type == 1"></div>
+                        <div ng-include="'templates/task/info/checkbox.html'" ng-if="x.test_type == 2"></div>
+                        <div ng-include="'templates/task/info/content.html'" ng-if="x.test_type == 3"></div>
+                        <div class="right-answer" ng-show="x.answer_type != 1 && x.test_type < 3 && x.content.answer">
+                            <div class="right">正确答案：{{x.content.answer}}</div>
+                        </div>
+                        <div class="teacher-ping" ng-repeat="voice_info in x.content.voice_list">
+                            <div class="title" ng-if="voice_info.type == '1'">老师评语</div>
+                            <div class="title" ng-if="voice_info.type == '2'">题目讲解</div>
+                            <div class="voice">
+                                <ul>
+                                    <li ng-click="play(voice)" ng-class="(voice.play)?'voice-play':''" ng-repeat="voice in voice_info.voice">{{voice.time}}″
+                                        <span ng-show="voice.loading" class="loading ion-load-d"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="teacher-ping" ng-if="x.content.video_url">
+                            <div class="title">视频讲解</div>
+                            <div class="video">
+                                <videogular vg-player-ready="onPlayerReady($API)" vg-auto-play="x.content.video.config.autoPlay">
+                                    <vg-media vg-src="x.content.video.config.sources" vg-preload="true" vg-tracks="x.content.video.config.tracks">
+                                    </vg-media>
+                                    <vg-buffering></vg-buffering>
+                                    <vg-controls vg-autohide="x.content.video.config.autoHide" vg-autohide-time="x.content.video.config.autoHideTime">
+                                        <vg-play-pause-button></vg-play-pause-button>
+                                        <vg-time-display>{{ currentTime || 0 | date:'mm:ss' }}</vg-time-display>
+                                        <vg-scrub-bar>
+                                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                        </vg-scrub-bar>
+                                        <vg-time-display>{{ timeLeft || 0 | date:'mm:ss' }}</vg-time-display>
+                                        <vg-volume>
+                                            <vg-mute-button></vg-mute-button>
+                                            <vg-volume-bar></vg-volume-bar>
+                                        </vg-volume>
+                                        <vg-fullscreen-button></vg-fullscreen-button>
+                                    </vg-controls>
+                                    <vg-overlay-play></vg-overlay-play>
+                                </videogular>
+                            </div>
+                        </div>
+                        <div class="teacher-content" ng-show="x.test_type == 3 && x.content.answer">
+                            <div class="title">答案</div>
+                            <div class="content" ng-bind-html="x.content.answer" view-picture></div>
+                        </div>
+                        <div class="teacher-content" ng-show="x.content.solution">
+                            <div class="title">解析</div>
+                            <div class="content" ng-bind-html="x.content.solution" view-picture></div>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </ion-slide>
+        </div>
+        </ion-slide-box>
+    </ion-content>
+</ion-view>

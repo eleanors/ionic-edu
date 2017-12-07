@@ -1,0 +1,135 @@
+@import './mixin';
+.icon-course {
+    background: url('../img/icon-course.png') no-repeat center center;
+    background-size: auto 100%;
+}
+
+.icon-course-active {
+    background: url('../img/icon-course-active.png') no-repeat center center;
+    background-size: auto 100%;
+}
+
+.icon-account {
+    background: url('../img/icon-account2.png') no-repeat center center;
+    background-size: 18px;
+}
+
+.icon-account-active {
+    background: url('../img/icon-account-active2.png') no-repeat center center;
+    background-size: 18px;
+}
+.icon-myClass{
+    background: url('../img/icon-myClass.png') no-repeat center center;
+    background-size: 20px;
+}
+.icon-myClass-active{
+    background: url('../img/icon-myClass-active.png') no-repeat center center;
+    background-size: 20px;
+}
+.icon-errorBook{
+    background: url('../img/icon-errorBook.png') no-repeat center center;
+    background-size: 20px;
+}
+.icon-errorBook-active{
+    background: url('../img/icon-errorBook-active.png') no-repeat center center;
+    background-size: 20px;
+}
+.alwaysTop{
+  z-index:100000000000000;
+}
+.tab-item{
+    span{
+        display: block;
+        margin: 0 auto;
+        line-height: 12px;
+        color: #686868;
+        font-size: 12px;
+    }
+}
+.tab-item-active{
+    span{
+        color: #3ec9a8;
+    }
+}
+.anim{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:  100%;
+  z-index: 1000000;
+  background: url('../img/splash.png') no-repeat center center;
+  background-size: auto 100%;
+}
+.next{
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  z-index: 1000001;
+}
+.course-nothing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 0;
+
+    img {
+        width: 60%;
+    }
+    .error-text {
+        color: #9b9b9b;
+    }
+}
+
+
+.button.button-close {
+    i {
+        width: 26px;
+        height: 18px;
+        border-radius: 20px;
+        border: 1px solid #fff;
+        font-size: 24px;
+        position: relative;
+        margin-top: 8px;
+        &:before {
+            position: absolute;
+            left: 8px;
+            top: -4px;
+        }
+    }
+}
+.platform-android .button.button-close i{
+    margin-top: 32px;
+}
+
+.attend-button {
+
+      display: block;
+      width: 32%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: #fff;
+      font-size: 16px;
+      margin-top: 50px;
+      border-radius: 30px;
+      background: #2cdab3;
+      transition: all .4s ease;
+      box-shadow: 0 4px 8px rgba(44, 218, 180, .2);
+
+      &.activated {
+        color: #60dec1;
+        background: #14c9a0;
+      }
+}
+

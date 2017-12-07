@@ -1,0 +1,21 @@
+<ion-view>
+  <ion-nav-title>账号注册</ion-nav-title>
+    <ion-nav-bar class="bar-cloud">
+        <ion-nav-back-button class="button-clear"></ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button class="button button-clear register-step">2/2</button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content  scroll="false" class="registers-wrap">
+        <div class="list">
+            <div class="item" href="#" ng-click="modifyName()">
+                <span class="label">学生姓名</span><span class="ion-ios-arrow-right arrow-right"></span><span class="item-note">{{userData.name?userData.name:'请输入学生的姓名'}}</span>
+            </div>
+            <div class="item" href="#" ng-click="modifySex()">
+                <span class="label">性别</span><span class="ion-ios-arrow-right arrow-right"></span><span class="item-note">{{userData.sex?'女':'男'}}</span>
+            </div>
+        </div>
+        <div class="button button-cloud" ng-click="finish()">完成</div>
+    </ion-content>
+</ion-view>

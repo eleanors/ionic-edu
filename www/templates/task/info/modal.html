@@ -1,0 +1,56 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable modal-header ">
+        <div class="time">
+            {{showTime}}
+        </div>
+        <h1 class="title">答题卡</h1>
+        <div class="buttons" ng-click="hideModal()">
+            <i class="ion ion-android-close"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content class="modal-content task-info-details" has-bouncing="true">
+        <div class="modal-list" ng-show="radio.length > 0">
+            <div class="title">单选题</div>
+            <ul>
+                <li ng-repeat="x in radio track by $index" ng-class="x.answer_class" ng-click="dump(x.num)">
+                    <span class="isvoice" ng-show="x.is_voice"></span> {{x.test_number}}
+                </li>
+            </ul>
+        </div>
+        <div class="modal-list" ng-show="checkbox.length > 0">
+            <div class="title">多选题</div>
+            <ul>
+                <li ng-repeat="x in checkbox track by $index" ng-class="x.answer_class" ng-click="dump(x.num)">
+                    <span class="isvoice" ng-show="x.is_voice"></span> {{x.test_number}}
+                </li>
+            </ul>
+        </div>
+        <div class="modal-list" ng-show="content.length > 0">
+            <div class="title">解答题</div>
+            <ul>
+                <li ng-repeat="x in content track by $index" ng-class="x.answer_class" ng-click="dump(x.num)">
+                    <span class="isvoice" ng-show="x.is_voice"></span> {{x.test_number}}
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+    <div class="task-info-bottom">
+        <ul>
+            <li>
+                <span class="success"></span> 正确
+            </li>
+            <li>
+                <span class="error"></span> 错误
+            </li>
+            <li>
+                <span class="half"></span> 半对
+            </li>
+            <li>
+                <span class="none"></span> 待批
+            </li>
+            <li>
+                <span class="blank"></span> 未答
+            </li>
+        </ul>
+    </div>
+</ion-modal-view>

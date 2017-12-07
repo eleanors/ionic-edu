@@ -1,0 +1,32 @@
+<ion-view>
+
+    <ion-nav-bar class="bar-cloud">
+        <ion-nav-back-button class="button-clear"></ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-title>忘记密码</ion-nav-title>
+
+    <ion-content scroll="false" class="register-wrap">
+        <form name="forgetForm">
+        <div class="list">
+            <div class="item item-input">
+                <span class="input-label">手机号</span>
+                <input type="tel" name="mobile" placeholder="请输入手机号" autocomplete="off" ng-model="forgetDate.mobile" clear-input="5" max-length="11" only-number>
+            </div>
+            <div class="item item-input">
+                <span class="input-label">验证码</span>
+                <input type="tel" name="code" placeholder="请输入验证码" autocomplete="off" ng-model="forgetDate.code"  clear-input="5,90" max-length="6" only-number>
+                <span class="code" ng-class="{avaliable: valid.mobile && !sendStatus}" ng-click="sendCode()">{{btnText}}</span>
+            </div>
+            <div class="item item-input">
+                <span class="input-label">新密码</span>
+                <input type="password" name="password" placeholder="请输入新密码" autocomplete="off" ng-model="forgetDate.password" clear-input="5" max-length="20">
+            </div>
+            <div class="item item-input">
+                <span class="input-label">新密码</span>
+                <input type="password"  name="passwords" placeholder="请确认新密码" autocomplete="off" ng-model="forgetDate.passwords" clear-input="5" max-length="20">
+            </div>
+        </div>
+        </form>
+        <div class="button button-cloud" ng-click="resetPwd()">重置密码</div>
+    </ion-content>
+</ion-view>

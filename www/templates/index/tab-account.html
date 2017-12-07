@@ -1,0 +1,26 @@
+<ion-view hide-nav-bar="true">
+    <ion-content scroll="false">
+        <div class="setting-header">
+        	<div class="avatar" ui-sref="main.promises">
+        		<span class="gender" ng-class="{0: 'man', 1: 'woman'}[userData.sex]"></span>
+                <span class="img"><img ng-src="{{userData.avatar | avatarFilter:userData.sex}}"></span>
+        	</div>
+        	<div class="name" ng-bind="userData.username"></div>
+        	<p class="radius-bottom"></p>
+        </div>
+
+        <div class="setting view-wrap">
+        	<div class="view-cell" flash ui-sref="main.feedback">
+        		<div class="cell-hd"><span class="icon-advise"></span></div>
+        		<div class="cell-bd">意见反馈</div>
+        		<div class="cell-ft ion-ios-arrow-right"></div>
+        	</div>
+        	<div class="view-cell" flash ui-sref="main.setting">
+        		<div class="cell-hd"><span class="icon-setting"></span></div>
+        		<div class="cell-bd">设置</div>
+        		<div class="cell-ft ion-ios-arrow-right"></div>
+        	</div>
+        </div>
+        <div class="version">{{version}}</div>
+    </ion-content>
+</ion-view>

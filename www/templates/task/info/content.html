@@ -1,0 +1,12 @@
+<div class="sub-title" ng-bind-html="x.content.topic" ng-show="x.content.topic" view-picture>
+</div>
+<div class="sub-img" ng-show="x.check.length > 0">
+	<div class="title">
+		我的答案<span>{{x.answer_type | AnswerType}}</span>
+	</div>
+	<ul>
+		<li ng-repeat="(y,img) in x.check track by $index">
+			<img ng-src="{{img}}" ng-click="previewPicture(y, img, $event)" img-load>
+		</li>
+	</ul>
+</div>

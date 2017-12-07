@@ -1,0 +1,59 @@
+<div class="sub-title" ng-bind-html="x.content.topic" ng-show="x.content.topic" view-picture></div>
+
+<div class="sub-answer">
+    <ul>
+        <li ng-if="x.content.options_a">
+            <div class="num">
+                <i ng-if="(x.check == 'A' && x.content.answer == 'A')" class="check">A</i>
+                <i ng-if="(x.check == 'A' && x.content.answer != 'A')" class="error">A</i>
+                <i ng-if="(x.check != 'A' && x.content.answer == 'A')">A</i>
+                <i ng-if="(x.check != 'A' && x.content.answer != 'A')">A</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_a"></div>
+        </li>
+        <li ng-if="x.content.options_b">
+            <div class="num">
+                <i ng-if="(x.check == 'B' && x.content.answer == 'B')" class="check">B</i>
+                <i ng-if="(x.check == 'B' && x.content.answer != 'B')" class="error">B</i>
+                <i ng-if="(x.check != 'B' && x.content.answer == 'B')">B</i>
+                <i ng-if="(x.check != 'B' && x.content.answer != 'B')">B</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_b"></div>
+        </li>
+        <li ng-if="x.content.options_c">
+            <div class="num">
+                <i ng-if="(x.check == 'C' && x.content.answer == 'C')" class="check">C</i>
+                <i ng-if="(x.check == 'C' && x.content.answer != 'C')" class="error">C</i>
+                <i ng-if="(x.check != 'C' && x.content.answer == 'C')">C</i>
+                <i ng-if="(x.check != 'C' && x.content.answer != 'C')">C</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_c"></div>
+        </li>
+        <li ng-if="x.content.options_d">
+            <div class="num"><i ng-if="(x.check == 'D' && x.content.answer == 'D')" class="check">D</i>
+                <i ng-if="(x.check == 'D' && x.content.answer != 'D')" class="error">D</i>
+                <i ng-if="(x.check != 'D' && x.content.answer == 'D')">D</i>
+                <i ng-if="(x.check != 'D' && x.content.answer != 'D')">D</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_d"></div>
+        </li>
+        <li ng-if="x.content.options_e">
+            <div class="num">
+                <i ng-if="(x.check == 'E' && x.content.answer == 'E')" class="check">E</i>
+                <i ng-if="(x.check == 'E' && x.content.answer != 'E')" class="error">E</i>
+                <i ng-if="(x.check != 'E' && x.content.answer == 'E')">E</i>
+                <i ng-if="(x.check != 'E' && x.content.answer != 'E')">E</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_e"></div>
+        </li>
+        <li ng-if="x.content.options_f">
+            <div class="num">
+                <i ng-if="(x.check == 'F' && x.content.answer == 'F')" class="check">F</i>
+                <i ng-if="(x.check == 'F' && x.content.answer != 'F')" class="error">F</i>
+                <i ng-if="(x.check != 'F' && x.content.answer == 'F')">F</i>
+                <i ng-if="(x.check != 'F' && x.content.answer != 'F')">F</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_f"></div>
+        </li>
+    </ul>
+</div>

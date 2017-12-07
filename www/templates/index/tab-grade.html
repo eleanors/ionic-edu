@@ -1,0 +1,35 @@
+<ion-view view-title="班级" hide-back-button="true">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ui-sref="main.attend">
+            加入班级
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content class="grade-course-wrap">
+        <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+        <p class="course-nothing" ng-if="courseData.length==0 && initstatus">
+            <img ng-src="{{status ? 'img/load-error.png' : 'img/blank.png'}}">
+            <span class="error-text">{{status ? '网络不佳, 下拉刷新重新加载' : '还没有加入班级哦~'}}</span>
+            <span class="attend-button" flash ui-sref="main.attend" ng-if="courseData.length==0 && !status">立即加入</span>
+        </p>
+
+        <div class="view-panel grade-course-list" ng-repeat="item in courseData track by $index">
+            <div class="view-panel-cell" flash ng-click="showDetailPage(item)">
+                <div class="view-cell-hd">
+                    <h4 class="ellipse">{{item.class_name}}</h4>
+                    <span class="types">{{item.class_grade_subject}}</span>
+                    <span class="number" ng-if="item.class_type == 0">班级编号: {{item.class_number}}</span>
+                    <span class="number" ng-if="item.class_type == 1">校区名称: {{item.school_name}}</span>
+                </div>
+                <div class="view-cell-bd"><span class="grade-button"></span></div>
+            </div>
+            <div class="view-panel-cell" flash ng-repeat="course in item.task_list" ng-click="showDetailPage(course)">
+                <div class="view-cell-hd hidden-title-status">
+                    <h4 class="ellipse">{{course.task_name}}</h4>
+                </div>
+                <div class="view-cell-bd"><span ng-class="{0: 'orange-text', 1: 'gray-text', 2: 'gray-text', 3: 'gray-text', 4: 'yuqi'}[course.task_status]">{{course.task_status | courseType:course.task_accuracy:course.deadline_time}}</span></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

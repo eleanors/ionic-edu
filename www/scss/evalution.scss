@@ -1,0 +1,368 @@
+@import './mixin.scss';
+$evalution-main-color: #40d6a0;
+
+.live-evalution-head {
+	position: relative;
+    height: 320px;
+    overflow: hidden;
+    @include setGradient(90deg);
+
+    .title {
+        color: #fff;
+        text-align: center;
+        margin: 10px 10px 0 10px;
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .evalution-wrap {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        position: relative;
+    	z-index: 1;
+    }
+
+    .evalution-level {
+        width: 106px;
+        height: 106px;
+        margin: 20px auto;
+        padding: 10px 10px;
+        background: url('../img/evalution.png');
+        background-size: contain;
+        
+	    .level {
+	        width: 100%;
+	        height: 100%;
+	        line-height: 1.4;
+	        border-radius: 100%;
+	        text-align: center;
+	        font-size: 58px;
+	        color: $evalution-main-color;
+	        font-weight: 500;
+	        background: #fff;
+	    }
+    }
+
+
+	.circle {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, .5);
+        border-radius: 100%;
+        padding: 3px 3px;
+        box-shadow: 0 0 4px rgba(200, 200, 200, .3);
+        position: relative;
+        overflow: hidden;
+
+	    .gradient {
+	        width: 100%;
+	        height: 100%;
+	        border-radius: 100%;
+	        overflow: hidden;
+	    }
+	    .circle-semi-a {
+	        width: 100%;
+	        height: 100%;
+            background: rgba(255,255,255,.6);
+	    }
+	    .circle-semi-b {
+	        width: 100%;
+	        height: 0%;
+            background-image:linear-gradient(0deg, #ffba4e 10%, #ffba4e 90%);
+	    }
+	    .circle-text {
+	        color: #535353;
+	        font-size: 14px;
+	        font-family: 'Arial';
+
+	        position: absolute;
+	        left: 0;
+	        top: 0;
+	        width: 100%;
+	        height: 100%;
+	        line-height: 60px;
+	        text-align: center;
+	    }
+    }
+
+    .circle-title {
+    	color: #fff;
+    	text-align: center;
+    	margin: 5px 0;
+    }
+
+    .radius-bottom {
+    	height: 50px;
+    	line-height: 40px;
+    	padding: 0 20px;
+    	background: #fff;
+    	border-radius: 5px 5px 0 0;
+
+    	position: absolute;
+    	bottom: 0;
+    	left: 15px;
+    	right: 15px;
+
+    	.name {
+    		float: left;
+    		color: #666;
+    		font-size: 16px;
+    	}
+    	.order {
+    		float: right;
+    		color: #ffba4e;
+    	}
+
+    	&:after {
+    		@include setBottomLine();
+    		left: 25px;
+    		right: 25px;
+    		bottom: 10px;
+    	}
+    }
+
+
+    .cloud {
+        position: absolute;
+        width: 70px;
+        height: 18px;
+        background: url('../img/cloud.png') no-repeat center;
+        background-size: 100%;
+
+        &.cloud-left {
+	        top: 15%;
+	        left: 10%;
+        }
+        &.cloud-middle {
+	        top: 0;
+	        right: 5%;
+        }
+        &.cloud-right {
+	        top: 3%;
+	        right: 1%;
+        }
+    }
+
+
+    .puzzle-left {
+        position: absolute;
+        left: 5%;
+        top: 25%;
+        width: 100px;
+        height: 28px;
+        background: url('../img/puzzle.png') no-repeat center;
+        background-size: 100%;
+    }
+    .puzzle-right {
+        position: absolute;
+        right: 15%;
+        top: 10%;
+        width: 100px;
+        height: 28px;
+        background: url('../img/puzzle.png') no-repeat center;
+        background-size: 60%;
+    }
+    .wave-bottom {
+        width: 100%;
+        height: 130px;
+        margin: 0 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: url('../img/evalution-bottom.png') no-repeat center bottom;
+        background-size: 100% 100%;
+    }
+}
+
+.course-evalution {
+    height: 350px;
+    .course-name {
+        margin-top: 0;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        :first-child {
+            max-width: 60%;
+        }
+        :last-child {
+            max-width: 20%;
+            margin-left: 5px;
+        }
+    }
+}
+
+.view-score-level {
+	margin: 0 15px 15px;
+	padding: 0 20px 20px 20px;
+    min-height: 350px;
+	background: #fff;
+    position: relative;
+    box-shadow: 0 4px 10px 0px rgba(200, 200, 200, 0.2);
+    overflow: hidden;
+
+	.score-level-type {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		span {
+			margin-left: 5px;
+			display: flex;
+			align-items: center;
+			justify-content: normal;
+			color: #848484;
+		}
+		em {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			margin-right: 4px;
+		}
+
+		.self-score em{
+			background: #ff7d57;
+		}
+		.mean-score em{
+			background: #91ed89;
+		}
+		.top-score em{
+			background: #3dc0af;
+		}
+	}
+
+    .level-type-title {
+    	color: #656565;
+	    font-weight: 400;
+	    font-size: 16px;
+	    font-family: 'Arial';
+    }
+
+    .level-type-list {
+    	display: flex;
+    	margin: 0 0;
+    }
+
+
+    .score-level-wrap {
+        position: relative;
+        &:before {
+            @include setLeftLine();
+            border-left: 1px solid #4fd9a7;
+            top: 3px;
+            left: 3px;
+            bottom: 0px;
+        }
+    }
+
+	.score-level-cell {
+		padding-left: 20px;
+		position: relative;
+
+	    .circle-point {
+		    position: absolute;
+		    left: 0;
+		    top: 3px;
+		    width: 8px;
+		    height: 8px;
+		    border-radius: 6px;
+		    border: 1px solid $evalution-main-color;
+		    background: #fff;
+	    }
+
+	    .score-level-hd{
+	    	color: $evalution-main-color;
+		    font-weight: 400;
+		    font-size: 14px;
+		    font-family: 'Arial';
+	    }
+
+	    .score-level-bd{
+	    	width: 100%;
+	    	padding: 0 0;
+	    	border-left: 1px solid #ff9b80;
+	    	border-right: 1px solid #4fd3ac;
+	    	position: relative;
+	    	overflow: hidden;
+
+	    	p { margin: 0 0;}
+
+	    	.colors-line {
+	    		height: 17px;
+	    		position: relative;
+   			 	background-image:-webkit-linear-gradient(0deg, #ff7c58, #fabe51, #48feaf, #3dc0af);
+
+   			 	em {
+   			 		width: 6px;
+   			 		height: 6px;
+   			 		border: 1px solid $evalution-main-color;
+   			 		border-radius: 6px;
+   			 		background: #fff;
+
+   			 		position: absolute;
+   			 		left: 0;
+   			 		top: 50%;
+   			 		margin-top: -3px;
+   			 	}
+
+   			 	.self-score {
+   			 		left: 90%;
+   			 	}
+
+   			 	.mean-score {
+   			 		left: 95%;
+   			 	}
+
+   			 	.top-score {
+   			 		left: 98%;
+   			 	}
+	    	}
+
+            .colors-shade{
+                height: 17px;
+                position: absolute;
+                left: 0;
+                top: 15px;
+                overflow: hidden;
+            }
+
+            .colors-shade-top {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 8px;
+                width: 100%;
+                background: rgba(255,255,255,.4);
+            }
+            .colors-shade-bottom {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 8px;
+                width: 100%;
+                background: rgba(255,255,255,.5);
+            }
+
+	    	.score-list{
+	    		height: 15px;
+	    		font-size: 10px;
+	    		line-height: 15px;
+	    		text-align: right;
+                em { position: absolute; }
+
+	    		.self-score {
+	    			color: #ff7d57;
+	    		}
+	    		.mean-score{
+	    			color: #91ed89;
+	    		}
+	    		.top-score {
+	    			color: #3dc0af;
+	    		}
+	    	}
+	    }
+	}
+}

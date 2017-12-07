@@ -1,0 +1,75 @@
+$border-color: #ececec;
+
+@mixin setTopLine($c: $border-color) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid $c;
+    color: $c;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+
+@mixin setBottomLine($c: $border-color) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid $c;
+    color: $c;
+    transform-origin: 0 100%;
+    transform: scaleY(0.5);
+}
+
+@mixin setLeftLine($c: $border-color) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-left: 1px solid $c;
+    color: $c;
+    transform-origin: 0 0;
+    transform: scaleX(0.5);
+}
+
+@mixin setRightLine($c: $border-color) {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-right: 1px solid $c;
+    color: $c;
+    transform-origin: 100% 0;
+    transform: scaleX(0.5);
+}
+
+@mixin setBorderLine($c: $border-color) {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    border-radius: 100px;
+    border: 1px solid $c;
+    transform: scale(.5);
+}
+
+@mixin setGradient($d: 90deg){
+    background-image:-webkit-linear-gradient($d, #42e695, #3bb2b8);
+    background-image:linear-gradient($d, #42e695, #3bb2b8);
+}
+
+@mixin setBoxShadow($op: .2){
+    box-shadow: 0 4px 10px -4px rgba(200,200,200,$op);
+}

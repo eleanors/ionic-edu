@@ -1,0 +1,37 @@
+<ion-view hide-tabs="true" class="task">
+    <ion-nav-title>{{info.task_name}}</ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear time">
+            <i class="ion">{{showTime}}</i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content overflow-scroll="false" class="task-start" scroll="false" has-bouncing="true">
+        <div content-load-status="hasTaskList" reload-view-handler="reloadTaskList()" show-reload-btn="true" reload-type="1">
+
+        <div class="title">
+            <span>{{$index+1}}</span>/{{answer_list.length}}&nbsp;&nbsp;&nbsp; {{thisQuestion.test_type | TestType}}
+            <div class="icon" ng-hide="true">
+                <i class="ion ion-checkmark-circled"></i>
+            </div>
+            <div class="answer fr" ng-click="showModal()">
+                <i class="ion ion-ios-paper-outline"></i> 答题卡
+            </div>
+        </div>
+
+        <ion-slide-box on-slide-changed="change($index)" auto-play="false" class="subject" does-continue="false" delegate-handle="Slide" ng-if="answer_list.length">
+            <ion-slide ng-repeat="(y,x) in answer_list track by $index">
+                <!--单选-->
+                 <ion-scroll direction="y" scrollbar-y="false" has-bouncing="true" style="overflow: auto; position: relative;" scroll-height="72">
+                    <div content-load-status="x.status" reload-view-handler="fetchContent()" show-reload-btn="true" reload-type="1">
+                        <div ng-include="'templates/task/question/radio.html'" ng-if="x.test_type == 1" class="sub-radio"></div>
+                        <div ng-include="'templates/task/question/checkbox.html'" ng-if="x.test_type == 2" class="sub-checkbox"></div>
+                        <div ng-include="'templates/task/question/content.html'" ng-if="x.test_type == 3" class="sub-content"></div>
+                    </ion-scroll>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        </div>
+    </ion-content>
+</ion-view>

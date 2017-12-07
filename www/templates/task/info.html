@@ -1,0 +1,73 @@
+<ion-view hide-tabs="true">
+    <ion-nav-title>{{answer.task_name}}</ion-nav-title>
+    <ion-content scroll="false" class="task-info" has-bouncing="true">
+        <ion-scroll direction="y" scroll-height="50" scrollbar-y="false" has-bouncing="true">
+            <ion-refresher pulling-text="下拉刷新..." spinner="dots" on-refresh="refreshHandle()"></ion-refresher>
+
+            <div class="task-answer-wrap" content-load-status="hasAnswerList && answer_list.length==0" reload-type="2"  show-reload-btn="false">
+            <div class="task-info-header">
+                <div class="content">
+                    <div class="course-number">
+                        <span class="number">&nbsp;{{answer.test_list.length || 0}}&nbsp;</span>
+                        <span class="title">题目数量</span>
+                    </div>
+                    <div class="course-rate">
+                        <span class="number">{{answer.student_accuracy || 0}}%</span>
+                        <span class="title">正确率</span>
+                    </div>
+                    <div class="course-rate">
+                        <span class="number">{{answer.task_accuracy || 0}}%</span>
+                        <span class="title">平均正确率</span>
+                    </div>
+                </div>
+                <p class="puzzle-left"></p>
+                <p class="puzzle-right"></p>
+                <p class="wave-bottom"></p>
+            </div>
+            <div class="modal-list" ng-show="radio.length > 0">
+                <div class="title">单选题</div>
+                <ul>
+                    <li ng-repeat="x in radio track by $index" ng-class="x.answer_class" ui-sref="main.info-details({id : id,number : x.num})">
+                        <span class="isvoice" ng-show="x.is_voice"></span> {{x.test_number}}
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-list" ng-show="checkbox.length > 0">
+                <div class="title">多选题</div>
+                <ul>
+                    <li ng-repeat="x in checkbox track by $index" ng-class="x.answer_class" ui-sref="main.info-details({id : id,number : x.num})">
+                        <span class="isvoice" ng-show="x.is_voice"></span> {{x.test_number}}
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-list" ng-show="content.length > 0">
+                <div class="title">解答题</div>
+                <ul>
+                    <li ng-repeat="x in content track by $index" ng-class="x.answer_class" ui-sref="main.info-details({id : id,number : x.num})">
+                        <span class="isvoice" ng-show="x.is_voice"></span> {{x.test_number}}
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </ion-scroll>
+        <div class="task-info-bottom">
+            <ul>
+                <li>
+                    <span class="success"></span> 正确
+                </li>
+                <li>
+                    <span class="error"></span> 错误
+                </li>
+                <li>
+                    <span class="half"></span> 半对
+                </li>
+                <li>
+                    <span class="none"></span> 待批
+                </li>
+                <li>
+                    <span class="blank"></span> 未答
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

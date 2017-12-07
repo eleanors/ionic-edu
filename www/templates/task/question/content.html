@@ -1,0 +1,25 @@
+<div class="sub-title" ng-bind-html="x.content.topic" view-picture>
+</div>
+<div class="sub-img" ng-show="x.check.length > 0">
+    <ul>
+        <li ng-repeat="(item_y,item) in x.check track by $index">
+            <span class="ion-minus-circled" ng-click="remove(x,item_y)" ng-show="(item.status != 0)"></span>
+            <img ng-src="{{item}}" ng-click="previewPicture(item_y, item, $event)" img-load>
+        </li>
+        <li class="upload" ng-click="show(x)" ng-hide="x.check.length>3"></li>
+    </ul>
+</div>
+<div class="sub-noimg" ng-hide="x.check.length > 0">
+    <div class="background" ng-click="show(x)">
+        <i class="ion ion-android-camera"></i>
+    </div>
+    <div class="text">
+        请在作业本上完成作业，拍照上传
+    </div>
+</div>
+<div class="button button-cloud" ng-click="next(x)" ng-if="(x.num != answer_list.length-1)">
+    下一题
+</div>
+<div class="button button-cloud" ng-click="showModal()" ng-if="(x.num == answer_list.length-1)">
+    提交
+</div>

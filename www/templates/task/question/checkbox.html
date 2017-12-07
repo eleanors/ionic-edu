@@ -1,0 +1,48 @@
+<div class="sub-title" ng-bind-html="x.content.topic" view-picture>
+</div>
+<div class="sub-answer">
+    <ul>
+        <li ng-if="x.content.options_a" ng-click="checkthis('A','checkbox',x)">
+            <div class="num">
+                <i ng-class="(x.check.indexOf('A') >= 0)?'check':''">A</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_a"></div>
+        </li>
+        <li ng-if="x.content.options_b" ng-click="checkthis('B','checkbox',x)">
+            <div class="num">
+                <i ng-class="(x.check.indexOf('B') >= 0)?'check':''">B</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_b"></div>
+        </li>
+        <li ng-if="x.content.options_c" ng-click="checkthis('C','checkbox',x)">
+            <div class="num">
+                <i ng-class="(x.check.indexOf('C') >= 0)?'check':''">C</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_c"></div>
+        </li>
+        <li ng-if="x.content.options_d" ng-click="checkthis('D','checkbox',x)">
+            <div class="num">
+                <i ng-class="(x.check.indexOf('D') >= 0)?'check':''">D</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_d"></div>
+        </li>
+        <li ng-if="x.content.options_e" ng-click="checkthis('E','checkbox',x)">
+            <div class="num">
+                <i ng-class="(x.check.indexOf('E') >= 0)?'check':''">E</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_e"></div>
+        </li>
+        <li ng-if="x.content.options_f" ng-click="checkthis('F','checkbox',x)">
+            <div class="num">
+                <i ng-class="(x.check.indexOf('F') >= 0)?'check':''">F</i>
+            </div>
+            <div class="answer" ng-bind-html="x.content.options_f"></div>
+        </li>
+    </ul>
+</div>
+<div class="button button-cloud" ng-click="next(x)" ng-if="(x.num != answer_list.length-1)">
+    下一题
+</div>
+<div class="button button-cloud" ng-click="showModal()" ng-if="(x.num == answer_list.length-1)">
+    提交
+</div>

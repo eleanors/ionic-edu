@@ -1,0 +1,39 @@
+<ion-view hide-back-button="true" hide-tabs>
+  <ion-nav-title>加入班级</ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-close" ui-sref="main.grade">
+            <i class="ion ion-ios-close-empty"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content scroll="false">
+
+        <div class="grade-search">
+            <div class="fill-header"></div>
+            <div class="search">
+                <input class="view-input" type="tel" name="grade" search-class ng-model="search.text" max-length="6" only-number>
+                <span class="search-button" ng-click="search()"></span>
+            </div>
+        </div>
+        <p class="link-number" ng-if="hasClass">请跟授课老师联系索取班级编号</p>
+
+        <p class="course-nothing" ng-if="hasClass">
+            <img ng-src="img/blank.png">
+        </p>
+
+        <div class="view-panel grade-list" ng-if="!hasClass">
+                <div class="view-panel-cell">
+                    <div class="view-cell-hd">
+                        <h4 class="ellipse">{{grade.className}}</h4>
+                        <ul class="media-box">
+                            <li class="media-list">{{grade.teacherName}}</li>
+                            <li class="media-list">{{grade.subjectName}}</li>
+                            <li class="media-list">{{grade.gradeName}}</li>
+                        </ul>
+                    </div>
+                    <div class="view-cell-bd"><span class="add-button" ng-click="addClass(grade.classNumber)">加入</span></div>
+                </div>
+        </div>
+
+    </ion-content>
+</ion-view>

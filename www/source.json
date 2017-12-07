@@ -1,0 +1,58 @@
+
+{
+    "scss": ["./scss/*.scss", "./www/scss/*.scss"],
+
+    "js": [
+        "./www/js/app.js",
+        "./www/js/router.js",
+        "./www/js/controller/IndexController.js",
+        "./www/js/controller/AccountController.js",
+        "./www/js/controller/AttendController.js",
+        "./www/js/controller/CourseController.js",
+        "./www/js/controller/EvalutionController.js",
+        "./www/js/controller/LoginController.js",
+        "./www/js/controller/TaskController.js",
+        "./www/js/controller/TaskInfoController.js",
+        "./www/js/controller/ErrbookController.js",
+        "./www/js/config.js",
+        "./www/js/filter.js",
+        "./www/js/service.js",
+        "./www/js/directive.js",
+        "./www/js/factory/system.js",
+        "./www/js/factory/factory.js",
+        "./www/js/factory/public.js",
+        "./www/js/factory/upload.js",
+        "./www/js/API.js",
+        "./www/js/factory/imageload.js"
+    ],
+
+	"vendorJS": [
+	    "./www/lib/lrz/lrz.all.bundle.js",
+	    "./www/lib/bodymovin/bodymovin.min.js",
+	    "./www/lib/photoswipe/dist/photoswipe.min.js",
+	    "./www/lib/photoswipe/dist/photoswipe-ui-default.min.js",
+	    "./www/lib/ionic/js/ionic.bundle.js",
+	    "./www/lib/cropper/cropper.js",
+	    "./www/lib/ngCordova/ng-cordova.min.js",
+	    "./www/lib/angular-ngStorage/angular-ngStorage.js",
+	    "./www/lib/videogular/videogular.js",
+	    "./www/lib/videogular/vg-overlay-play.min.js",
+	    "./www/lib/videogular/vg-controls.min.js",
+	    "./www/lib/videogular/vg-buffering.min.js",
+	    "./www/lib/videogular/vg-poster.min.js"
+	],
+
+    "template": "./www/templates/**/*.html",
+
+    "css": ["./www/css/ionic.app.css", "./www/css/style.css", "./www/lib/cropper/cropper.css", "./www/lib/videogular/videogular.min.css"],
+
+    "images": ["./www/img/*.png"],
+
+    "reset": ["./www/chcp.json", "./www/chcp.manifest", "./www/manifest.json", "./www/img/blank.png", "./www/img/load-error.png", "./www/img/broken.png", "./www/img/avatar-man.png", "./www/img/avatar-woman.png", "img/test.png"],
+
+    "fonts": ["./www/lib/ionic/fonts/*", "./www/lib/videogular/fonts/* "],
+
+    "photoswipe": ["./www/css/default-skin.png", "./www/css/default-skin.svg"],
+
+    "mathjax": ["./www/lib/mathjax/**/*"]
+}

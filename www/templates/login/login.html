@@ -1,0 +1,31 @@
+<ion-view hide-nav-bar="true">
+    <ion-content scroll="false">
+    <div class="login">
+        <form name="loginForm" ng-keypress="loginHandle($event)">
+            <div class="login-box" login-view-translate>
+                <div class="lable-cell">
+                    <div class="cell-hd">
+                            <span class="icon mobile"></span>
+                    </div>
+                    <div class="cell-bd">
+                    <input type="tel" name="mobile" autocomplete="off" placeholder="请输入手机号" ng-model="user.mobile" clear-input max-length="11" only-number>
+                    </div>
+                </div>
+                <div class="lable-cell">
+                    <div class="cell-hd">
+                            <span class="icon password"></span>
+                    </div>
+                    <div class="cell-bd">
+                    <input type="password" name="password" autocomplete="off" placeholder="请输入密码" ng-model="user.password" clear-input max-length="20">
+                    </div>
+                </div>
+                <div class="login-span">
+                    <span class="fl" ng-click="register()">立即注册</span>
+                    <span class="fr" ng-click="forgetPwd()">忘记密码</span>
+                </div>
+                <button type="button" class="login-button" ng-click="login()">登录</button>
+            </div>
+        </form>
+    </div>
+    </ion-content>
+</ion-view>
